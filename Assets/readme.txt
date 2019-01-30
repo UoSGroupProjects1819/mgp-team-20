@@ -1,0 +1,1 @@
+In here please store all assets, for example, UI elements, 3D models, images, clip-arts, sounds, etc.
