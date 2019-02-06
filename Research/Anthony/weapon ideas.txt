@@ -1,0 +1,42 @@
+Pistol - Model: Blue Banana
+- Semi-automatic
+- Recoil
+
+Flamethrower - Model: Fire Hydrant
+- Constant stream
+- Burn; Propane and Gasoline, acts similar to Napalm
+- Smoke; Asphyxiation
+
+Shotgun - Model: Trumpet
+- Double-barrel break-action
+- Massive recoil
+- Pellets; Can hit multiple targets, more inaccurate due to bullet spread
+
+Sniper - Model: Umbrella
+- Semi-automatic
+- No-scope
+- 1 second cooldown
+- Medium recoil
+
+AK-47 -  Model: Keytar/Guitar
+- Automatic
+- No cooldown
+- Same recoil as pistol
+
+Shuriken - Model: Coasters
+- OHKO
+- No recoil
+- No cooldown
+- Visible curve
+- Disappear on collision
+
+Grenade Launcher - Model: Tennis Racket with Tennis Balls
+- Delayed explosion
+- Visible curve
+- 2 bounces then explode, or on impact of enemy
+- Moderate recoil
+- 2 second cooldown
+
+
+
+Random hiccups once every (30-60s), massive recoil
