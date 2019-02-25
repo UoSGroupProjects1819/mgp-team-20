@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2015
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drunk Shooter", "Drunk Shooter.csproj", "{BF95C493-4C89-7416-D6A3-EA64A03B6F2E}"
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{449A98A3-B305-37A5-EA42-846128CAC008}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BF95C493-4C89-7416-D6A3-EA64A03B6F2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF95C493-4C89-7416-D6A3-EA64A03B6F2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF95C493-4C89-7416-D6A3-EA64A03B6F2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF95C493-4C89-7416-D6A3-EA64A03B6F2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{449A98A3-B305-37A5-EA42-846128CAC008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{449A98A3-B305-37A5-EA42-846128CAC008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{449A98A3-B305-37A5-EA42-846128CAC008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{449A98A3-B305-37A5-EA42-846128CAC008}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

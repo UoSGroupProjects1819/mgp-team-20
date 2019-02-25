@@ -19,8 +19,12 @@ public class movement : MonoBehaviour
 
     Transform cameraTransform;
 
-
     private CharacterController controller;
+    Vector3 position;
+    Vector3 direction;
+
+    int layerMask = 1 << 9;
+
 
     void Start()
     {
@@ -31,8 +35,25 @@ public class movement : MonoBehaviour
 
         cameraTransform = Camera.main.transform;
         gameObject.transform.position = new Vector3(0, 0, 0);
+        layerMask = ~layerMask;
     }
-    
+
+    void Update()
+    {
+        var heading = GameObject.FindGameObjectWithTag("Reticle").transform.position - Camera.main.transform.position;
+        var distance = heading.magnitude;
+        var direction = heading / distance;
+        if (Input.GetMouseButtonDown(1))
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
+            {
+                Debug.DrawRay(Camera.main.transform.position, transform.TransformDirection(direction) * hit.distance, Color.red);
+                Debug.Log("Hit");
+            }
+        }
+    }
+
     void FixedUpdate()
     {
         horizontalMovement = Input.GetAxis("Mouse X") * speed;
