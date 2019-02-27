@@ -23,11 +23,14 @@ public class movement : MonoBehaviour
     Vector3 position;
     Vector3 direction;
 
-    int layerMask = 1 << 9;
+    int layerMask = 0;
 
+    public GameObject reticleChild;
 
     void Start()
     {
+        layerMask = LayerMask.GetMask("NPC");
+        reticleChild = this.gameObject.transform.GetChild(0).GetChild(22).gameObject;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -35,21 +38,24 @@ public class movement : MonoBehaviour
 
         cameraTransform = Camera.main.transform;
         gameObject.transform.position = new Vector3(0, 0, 0);
-        layerMask = ~layerMask;
     }
 
     void Update()
     {
-        var heading = GameObject.FindGameObjectWithTag("Reticle").transform.position - Camera.main.transform.position;
+        var heading = reticleChild.transform.position - Camera.main.transform.position;
         var distance = heading.magnitude;
         var direction = heading / distance;
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
-            if (Physics.Raycast(Camera.main.transform.position, transform.TransformDirection(direction), out hit, Mathf.Infinity, layerMask))
+            Ray ray = Camera.main.ScreenPointToRay(reticleChild.transform.position);
+            RaycastHit[] hit = Physics.RaycastAll(ray.origin, direction, Mathf.Infinity, layerMask);
+            foreach (RaycastHit h in hit)
             {
-                Debug.DrawRay(Camera.main.transform.position, transform.TransformDirection(direction) * hit.distance, Color.red);
-                Debug.Log("Hit");
+                if (h.collider.tag == "Enemy")
+                {
+                    Debug.Log("HIT!");
+                    h.collider.gameObject.SetActive(false);
+                }
             }
         }
     }
