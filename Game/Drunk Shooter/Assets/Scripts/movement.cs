@@ -5,13 +5,13 @@ using UnityEngine;
 public class movement : MonoBehaviour
 {
     public float speed = 7.5f; //Movement speed of the player
-    public float jumpSpeed = 10.0f; //Jump speed of the player
+    public float jumpSpeed = 12.5f; //Jump speed of the player
     public float gravity = 20.0f; //Gravity speed
 
     private float pitch = 0f; //Horizontal rotation; left and right
     private float yaw = 0f; //Vertical rotation; up and down
-    private float minYaw = -35.0f; //Lowest degree that the player can look down
-    private float maxYaw = 45.0f; //Highest degree that the player can look up
+    private float minYaw = -70.0f; //Lowest degree that the player can look down
+    private float maxYaw = 55.0f; //Highest degree that the player can look up
 
     private float horizontalMovement = 0; //Horizontal movement set to 0 temporarily
     private float verticalMovement = 0; //Vertical movement set to 0 temporarily
