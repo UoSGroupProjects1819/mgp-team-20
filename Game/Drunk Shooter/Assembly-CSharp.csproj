@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\movement.cs" />
     <Compile Include="Assets\Scripts\NPC.cs" />
+    <Compile Include="Assets\Scripts\pickUp.cs" />
     <Compile Include="Assets\Scripts\reticleControl.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Anthony.DESKTOP-0V7VOLS.000/Documents/GitHub/mgp-team-20/Game/Drunk Shooter/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

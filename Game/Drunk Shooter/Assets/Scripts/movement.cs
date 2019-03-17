@@ -85,4 +85,15 @@ public class movement : MonoBehaviour
         movementDirection.y -= (gravity * Time.deltaTime); //Make them fall over time
         controller.Move(movementDirection * Time.deltaTime); //Actually move the player
     }
+
+    void OnControllerColliderHit(ControllerColliderHit hit) //Whilst the player is hitting *something*
+    {
+        Rigidbody attachedBody = hit.collider.attachedRigidbody; //Find the Rigidbody of the colliding item
+        if (attachedBody == null || attachedBody.isKinematic) //If there is none, or it's kinematic
+            return; //just stop
+        if (hit.moveDirection.y < -0.3f)
+            return;
+        Vector3 collisionDirection = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z); //Push the thing
+        attachedBody.velocity = direction * speed; //Give it this speed
+    }
 }
