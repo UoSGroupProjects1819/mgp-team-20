@@ -27,10 +27,12 @@ public class movement : MonoBehaviour
 
     public GameObject reticleChild; //GameObject for the reticle to be set to
 
+    public ParticleSystem onKillEffect;
+
     void Start()
     {
         layerMask = LayerMask.GetMask("NPC"); //Set the layer mask to "NPC" - only the NPCs will have this set
-        reticleChild = this.gameObject.transform.GetChild(0).GetChild(22).gameObject; //Set the reticle to "reticleChild"
+        reticleChild = this.gameObject.transform.GetChild(0).GetChild(24).gameObject; //Set the reticle to "reticleChild"
         //GetChild(0) is the Camera, and GetChild(0).GetChild(22) is the 23rd (including 0) game object set as a child of the Camera
         Cursor.lockState = CursorLockMode.Locked; //Don't let the cursor move
         Cursor.visible = false; //Make the cursor invisible - the cursor isn't necessary due to the automation of the reticle
@@ -54,13 +56,14 @@ public class movement : MonoBehaviour
             {
                 if (h.collider.tag == "Enemy") //if the raycast object has the tag "Enemy"
                 {
-                    Debug.Log("HIT!"); //Send a message to the console saying "HIT!" - for testing purposes only, will not be seen by the player
+                    Debug.Log("HIT!"); //Send a message to the console saying "HIT!" - for testing purposes only, will not be seen by the player#
                     h.collider.gameObject.GetComponent<Animator>().SetTrigger("death");
-                   // h.collider.gameObject.SetActive(false); //Disable the object - Destroying the object is too slow of a process to do
+                    h.collider.gameObject.GetComponent<NPC>().deathActive = true;
                 }
             }
         }
     }
+
 
     void FixedUpdate()
     {
@@ -85,5 +88,16 @@ public class movement : MonoBehaviour
 
         movementDirection.y -= (gravity * Time.deltaTime); //Make them fall over time
         controller.Move(movementDirection * Time.deltaTime); //Actually move the player
+    }
+
+    void OnControllerColliderHit(ControllerColliderHit hit) //Whilst the player is hitting *something*
+    {
+        Rigidbody attachedBody = hit.collider.attachedRigidbody; //Find the Rigidbody of the colliding item
+        if (attachedBody == null || attachedBody.isKinematic) //If there is none, or it's kinematic
+            return; //just stop
+        if (hit.moveDirection.y < -0.3f)
+            return;
+        Vector3 collisionDirection = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z); //Push the thing
+        attachedBody.velocity = direction * speed; //Give it this speed
     }
 }
