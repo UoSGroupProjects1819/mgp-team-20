@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class control : MonoBehaviour
 {
-    public GameObject particle;
+    public GameObject ProjToTest;
+    public ParticleSystem ProjPS;
+    public ParticleSystem ProjHit;
+
     void Update()
     {
-        var mousePos = Input.mousePosition;
 
         if (Input.GetButtonDown("Fire1"))
         {
-            particle.transform.position = Camera.main.ScreenToWorldPoint(mousePos);
+            ProjToTest.SetActive(true);
+        }
+
+        if(ProjPS.IsAlive() == false)
+        {
+            if (ProjHit.IsAlive() == false)
+            {
+                ProjToTest.SetActive(false);
+                ProjToTest.transform.position = new Vector3(0, 0, 0);
+            }
         }
 
     }
