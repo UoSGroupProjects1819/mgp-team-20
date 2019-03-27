@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     public GameObject player; //Used for shortening code - I can type "player" instead of GameObject.Find("player") etc
     public GameObject pistol;
@@ -15,13 +15,13 @@ public class movement : MonoBehaviour
     //In the NPC file I will make it so they check if lastShot is higher than 0, meaning the player has shot, and then they can aggro
 
     public float speed = 7.5f; //Movement speed of the player
-    public float jumpSpeed = 12.5f; //Jump speed of the player
+    public float jumpSpeed = 7.5f; //Jump speed of the player
     public float gravity = 20.0f; //Gravity speed
 
     private float pitch = 0f; //Horizontal rotation; left and right
     private float yaw = 0f; //Vertical rotation; up and down
-    private float minYaw = -70.0f; //Lowest degree that the player can look down
-    private float maxYaw = 55.0f; //Highest degree that the player can look up
+    private float maximumYaw = -75.0f; //Highest degree that the player can look up
+    private float minimumYaw = 75.0f; //Lowest degree that the player can look down
 
     private float varianceX = 0.0f; //Variance for shotgun shells
     private float varianceY = 0.0f; //Variance for shotgun shells
@@ -217,7 +217,7 @@ public class movement : MonoBehaviour
         verticalMovement = Input.GetAxis("Mouse Y") * speed; //Vertical movement of the mouse
         pitch += horizontalMovement; //Add the mouse's horizontal movement to the pitch
         yaw += -verticalMovement; //Add the negative of the mouse's movement to the yaw (because of how the mouse works)
-        yaw = Mathf.Clamp(yaw, minYaw, maxYaw); //Clamp the yaw between the maximum and minimum vertical axis, so the player can't "break their neck" or look upside down
+        yaw = Mathf.Clamp(yaw, maximumYaw, minimumYaw); //Clamp the yaw between the maximum and minimum vertical axis, so the player can't "break their neck" or look upside down
         transform.eulerAngles = new Vector3(yaw, pitch, 0f); //Set the angle that the player is looking to that
 
         if (controller.isGrounded) //If the player is grounded

@@ -32,6 +32,17 @@ public class pickUp : MonoBehaviour
                 item.GetComponent<Rigidbody>().isKinematic = false;
                 item.GetComponent<Rigidbody>().AddForce(temporaryParent.transform.forward * throwForce);
                 isHolding = false;
+                if (item.name.ToLower().Contains("bottle")  //If the item's name contains
+                    || item.name.ToLower().Contains("shot") //bottle OR (|| is or) shot...
+                    || item.name.ToLower().Contains("glass")
+                    || item.name.ToLower().Contains("whiskey"))
+                {
+                    //#PLAY CLINK SOUND
+                }
+                else
+                {
+                    //#PLAY THUD SOUNDS
+                }
             }
         }
         else
@@ -54,6 +65,7 @@ public class pickUp : MonoBehaviour
             item.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             item.GetComponent<Rigidbody>().isKinematic = true;
             item.transform.SetParent(temporaryParent.transform);
+            temporaryParent.GetComponent<Rigidbody>().detectCollisions = true;
         }
     }
 }

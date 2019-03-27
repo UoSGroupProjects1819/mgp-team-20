@@ -4,35 +4,61 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour {
 
+    public GameObject bullet;
+    public GameObject player;
+
     public float deathTimer;
     public bool deathActive;
     public ParticleSystem onKillEffect;
+    public float aggro;
+
+    private float movementSpeed = 1.0f;
+    private bool bulletTravel = false;
+    private float attackCooldown;
+    private float lastShotNPC = -1.0f;
+
+    public void Start()
+    {
+        bullet = GameObject.Find("Bullet");
+        player = GameObject.Find("Player");
+        aggro = player.GetComponent<Movement>().lastShot;
+    }
 
     public void KillEnemy()
     {
         Instantiate(onKillEffect, gameObject.transform.position, Quaternion.identity);
-        gameObject.SetActive(false); //Disable the object - Destroying the object is too slow of a process to do
-
+        deathActive = false;
+        gameObject.SetActive(false);
     }
 
-    private void Update()
+    public void Update()
     {
         if (deathActive && deathTimer > 0)
-        {
             deathTimer -= Time.deltaTime;
-        }
-
-        if(deathActive && deathTimer <= 0)
-        {
+        if (deathActive && deathTimer <= 0)
             KillEnemy();
-        }
-
+        if (aggro < 0.0f)
+            lastShotNPC = Time.time;
+        if (bulletTravel)
+            bullet.transform.position += transform.forward * Time.time * movementSpeed;
     }
 
-    void LateUpdate () //Update after all the Update() functions have done, hence "LateUpdate()"
+    public void LateUpdate () //Update after all the Update() functions have done, hence "LateUpdate()"
     {
         Vector3 cameraPos = Camera.main.transform.position; //Save the camera's position to the variable "cameraPos"
         cameraPos.y = transform.position.y; //Look at Camera on all axis except Y axis (unnecessary for Y axis, and will look weird)
         transform.LookAt(cameraPos); //Look at the Camera
-	}
+        if (aggro > 0.0f)
+        {
+            //Aggro onto the player only after they have taken their first shot of the game
+            attackCooldown = Random.Range(1, 3);
+            if (Time.time - lastShotNPC >= attackCooldown)
+            {
+                //Shoot the player
+                Instantiate(bullet, gameObject.transform);
+                bullet.transform.LookAt(player.transform);
+                bulletTravel = true;
+            }
+        }
+    }
 }
