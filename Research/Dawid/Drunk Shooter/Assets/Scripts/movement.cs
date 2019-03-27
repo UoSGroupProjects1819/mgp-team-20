@@ -147,8 +147,8 @@ public class movement : MonoBehaviour
                     {
                         for (int i = 0; i >= 5; i++) //We want 6 bullets (0 to 5 inclusive), so loop the following code until that is met
                         {
-                            varianceX = Random.Range(-10, 10); //Randomise the variance for each shell
-                            varianceY = Random.Range(-10, 10);
+                            varianceX = Random.Range(-0.5f, 0.5f); //Randomise the variance for each shell
+                            varianceY = Random.Range(-0.5f, 0.5f);
                             Ray ray = Camera.main.ScreenPointToRay(reticleChild.transform.position); //Check a raycast through the reticle
                             RaycastHit[] hit = Physics.RaycastAll(ray.origin, direction + new Vector3(varianceX, varianceY, 0), Mathf.Infinity, layerMask); //and save all the ones with the layer "NPC" to a list called "hit"
                             foreach (RaycastHit h in hit) //For all the things that are hit by the raycast
