@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: 7557b76e9305b00428245a627b16b72a
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: pool ball black
+    100002: pool ball red 1
+    100004: pool ball red 2
+    100006: pool ball red 3
+    100008: pool ball red 4
+    100010: pool ball red 5
+    100012: pool ball red 6
+    100014: pool ball red 7
+    100016: pool ball white
+    100018: pool ball yellow 1
+    100020: pool ball yellow 2
+    100022: pool ball yellow 3
+    100024: pool ball yellow 4
+    100026: pool ball yellow 5
+    100028: pool ball yellow 6
+    100030: pool ball yellow 7
+    100032: pool cue
+    100034: //RootNode
+    100036: pool table
+    400000: pool ball black
+    400002: pool ball red 1
+    400004: pool ball red 2
+    400006: pool ball red 3
+    400008: pool ball red 4
+    400010: pool ball red 5
+    400012: pool ball red 6
+    400014: pool ball red 7
+    400016: pool ball white
+    400018: pool ball yellow 1
+    400020: pool ball yellow 2
+    400022: pool ball yellow 3
+    400024: pool ball yellow 4
+    400026: pool ball yellow 5
+    400028: pool ball yellow 6
+    400030: pool ball yellow 7
+    400032: pool cue
+    400034: pool table
+    400036: //RootNode
+    2100000: 'Material #2'
+    2100002: 'Material #4'
+    2100004: pool ball yellow
+    2100006: pool ball black
+    2100008: pool ball white
+    2100010: No Name
+    2300000: pool ball black
+    2300002: pool ball red 1
+    2300004: pool ball red 2
+    2300006: pool ball red 3
+    2300008: pool ball red 4
+    2300010: pool ball red 5
+    2300012: pool ball red 6
+    2300014: pool ball red 7
+    2300016: pool ball white
+    2300018: pool ball yellow 1
+    2300020: pool ball yellow 2
+    2300022: pool ball yellow 3
+    2300024: pool ball yellow 4
+    2300026: pool ball yellow 5
+    2300028: pool ball yellow 6
+    2300030: pool ball yellow 7
+    2300032: pool cue
+    2300034: pool table
+    3300000: pool ball black
+    3300002: pool ball red 1
+    3300004: pool ball red 2
+    3300006: pool ball red 3
+    3300008: pool ball red 4
+    3300010: pool ball red 5
+    3300012: pool ball red 6
+    3300014: pool ball red 7
+    3300016: pool ball white
+    3300018: pool ball yellow 1
+    3300020: pool ball yellow 2
+    3300022: pool ball yellow 3
+    3300024: pool ball yellow 4
+    3300026: pool ball yellow 5
+    3300028: pool ball yellow 6
+    3300030: pool ball yellow 7
+    3300032: pool cue
+    3300034: pool table
+    4300000: pool table
+    4300002: pool ball red 7
+    4300004: pool ball red 6
+    4300006: pool ball red 5
+    4300008: pool ball red 4
+    4300010: pool ball red 3
+    4300012: pool ball red 2
+    4300014: pool ball yellow 5
+    4300016: pool ball yellow 7
+    4300018: pool ball yellow 6
+    4300020: pool ball black
+    4300022: pool ball yellow 4
+    4300024: pool ball red 1
+    4300026: pool ball yellow 2
+    4300028: pool ball yellow 1
+    4300030: pool ball yellow 3
+    4300032: pool ball white
+    4300034: pool cue
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
