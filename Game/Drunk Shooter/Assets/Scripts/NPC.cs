@@ -6,21 +6,22 @@ public class NPC : MonoBehaviour {
 
     public GameObject bullet;
     public GameObject player;
-
+    public Vector3 cameraPos;
+    public int hitChance = 6;
+    public int randomiser;
     public float deathTimer;
     public bool deathActive;
     public ParticleSystem onKillEffect;
     public float aggro;
+    public Vector3 heldPlayerLocation;
+    public float attackCooldown;
 
+    private float shootTime = -1.0f;
     private float movementSpeed = 1.0f;
-    private bool bulletTravel = false;
-    private float attackCooldown;
-    private float lastShotNPC = -1.0f;
 
     public void Start()
     {
         player = GameObject.Find("Player");
-        aggro = player.GetComponent<Movement>().lastShot;
     }
 
     public void KillEnemy()
@@ -32,32 +33,31 @@ public class NPC : MonoBehaviour {
 
     public void Update()
     {
+        aggro = player.GetComponent<Movement>().lastShot;
         if (deathActive && deathTimer > 0)
             deathTimer -= Time.deltaTime;
         if (deathActive && deathTimer <= 0)
             KillEnemy();
-        if (aggro < 0.0f)
-            lastShotNPC = Time.time;
-        if (bulletTravel)
-            bullet.transform.position += transform.forward * Time.time * movementSpeed;
     }
 
     public void LateUpdate () //Update after all the Update() functions have done, hence "LateUpdate()"
     {
-        Vector3 cameraPos = Camera.main.transform.position; //Save the camera's position to the variable "cameraPos"
+        cameraPos = Camera.main.transform.position; //Save the camera's position to the variable "cameraPos"
         cameraPos.y = transform.position.y; //Look at Camera on all axis except Y axis (unnecessary for Y axis, and will look weird)
         transform.LookAt(cameraPos); //Look at the Camera
-        //if (aggro > 0.0f)
-        //{
+        if (aggro >= 0.0f)
+        {
             //Aggro onto the player only after they have taken their first shot of the game
-            attackCooldown = Random.Range(1, 3);
-            if (Input.GetMouseButtonDown(0))
+            attackCooldown = Random.Range(2, 4);
+            if (Time.time - shootTime >= attackCooldown)
             {
-            //Shoot the player
-                GameObject newProj = Instantiate(bullet, gameObject.transform.position + new Vector3(0, 1, 0), Quaternion.identity) as GameObject;
-                newProj.GetComponent<Rigidbody>().AddForce(player.transform.position * 40f);
-               // newProj.transform.LookAt(player.transform);
+                heldPlayerLocation = (cameraPos - new Vector3(0.0f, 1.0f, 0.0f));
+                GameObject newProj = Instantiate(bullet, gameObject.transform.position + new Vector3(0.0f, 1.0f, 0.0f), Quaternion.identity) as GameObject;
+                newProj.transform.LookAt(heldPlayerLocation);
+                shootTime = Time.time;
             }
-        //}
+            //Shoot the player
+            // newProj.transform.LookAt(player.transform);
+        }
     }
 }

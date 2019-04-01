@@ -15,6 +15,7 @@ public class pickUp : MonoBehaviour
 
     void Start()
     {
+        gameObject.layer = 12;
         objectScale = transform.lossyScale;
         item = gameObject;
     }
