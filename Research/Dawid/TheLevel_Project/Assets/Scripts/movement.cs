@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     public GameObject player; //Used for shortening code - I can type "player" instead of GameObject.Find("player") etc
     public GameObject pistol;
@@ -12,8 +12,9 @@ public class movement : MonoBehaviour
     public GameObject shotgun;
 
     public float lastShot = -1.0f; //The time since the last shot, used for cooldowns. Default at -1.0f so the enemies don't aggro instantly
-    //In the NPC file I will make it so they check if lastShot is higher than 0, meaning the player has shot, and then they can aggro
+                                   //In the NPC file I will make it so they check if lastShot is higher than 0, meaning the player has shot, and then they can aggro
 
+    public float health = 100.0f;
     public float speed = 7.5f; //Movement speed of the player
     public float jumpSpeed = 12.5f; //Jump speed of the player
     public float gravity = 20.0f; //Gravity speed
@@ -65,6 +66,8 @@ public class movement : MonoBehaviour
 
     void Update()
     {
+        if (health <= 0.0f)
+            Application.Quit();
         var heading = reticleChild.transform.position - cameraTransform.position; //Calculation of the angle from the Camera to the reticle
         var distance = heading.magnitude; //^
         var direction = heading / distance; //^
