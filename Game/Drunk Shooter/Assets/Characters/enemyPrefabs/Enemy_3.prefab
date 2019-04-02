@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1191642159412684}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -858, y: 0, z: -65}
-  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
+  m_LocalScale: {x: 0.006, y: 0.006, z: 0.006}
   m_Children:
   - {fileID: 4653207405130762}
   - {fileID: 4290319360166448}
@@ -117,11 +117,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 5149850415425085085, guid: 1225d4dad7dc82041837007d01e124f7, type: 3}
   player: {fileID: 0}
+  cameraPos: {x: 0, y: 0, z: 0}
+  hitChance: 6
+  randomiser: 0
   deathTimer: 1
   deathActive: 0
   onKillEffect: {fileID: 5669717086122117777, guid: 167302c0613b1a840af62342ac3df1f1,
     type: 3}
   aggro: 0
+  heldPlayerLocation: {x: 0, y: 0, z: 0}
+  attackCooldown: 0
 --- !u!65 &3415343749866761648
 BoxCollider:
   m_ObjectHideFlags: 0
