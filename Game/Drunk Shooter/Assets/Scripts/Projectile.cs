@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
@@ -18,8 +17,7 @@ public class Projectile : MonoBehaviour
         onHitEffect = gameObject.transform.GetChild(1).gameObject;
 
         Physics.IgnoreLayerCollision(10, 11);
-
-        Debug.Log("Projectile here!");
+        
         Destroy(gameObject, 5f);
     }
 
@@ -32,7 +30,7 @@ public class Projectile : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "Player" || collision.gameObject.name == "Main Camera")
-            GameObject.Find("Player").GetComponent<Movement>().health -= 1.0f;
+            GameObject.Find("Player").GetComponent<movement>().health -= 1.0f;
         projectileEffect.SetActive(false);
         onHitEffect.SetActive(true);
         Destroy(gameObject, 1f);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class movement : MonoBehaviour
 {
     public GameObject player; //Used for shortening code - I can type "player" instead of GameObject.Find("player") etc
     public GameObject pistol;

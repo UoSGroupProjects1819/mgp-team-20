@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    List<GameObject> enemies; //List of enemies
+    List<GameObject> deadEnemies; //List for dead enemies
+
     public GameObject player; //Used for shortening code - I can type "player" instead of GameObject.Find("player") etc
     public GameObject pistol;
     public GameObject flamethrower;
@@ -44,6 +47,11 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
+        GameObject[] temporaryList = Resources.FindObjectsOfTypeAll<GameObject>(); //Temporary list to store all GO's
+        foreach(GameObject x in temporaryList) //For each GO in the list
+                if (x.name.Contains("Enemy")) //if it's name contains "Enemy" (all the enemies, and only the enemies)
+                    enemies.Add(x); //Add them to the list of enemies
+
         player = GameObject.Find("Player"); //Actually setting the GameObjects and Strings to not be blank
         pistol = GameObject.Find("banana"); //Has to be done in Start() or Awake(), can't be done anywhere else
         flamethrower = GameObject.Find("lamp");
@@ -65,6 +73,16 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
+        foreach(GameObject x in enemies) //For each of the enemies
+            if (x.activeSelf == false) //if it's dead
+                deadEnemies.Add(x); //add it to the list of dead enemies
+        foreach (GameObject x in deadEnemies) //For each of the dead enemies
+            if (x.GetComponent<NPC>().deathTimer + 10.0f < Time.time) //if they've been dead for more than 10 seconds
+                x.SetActive(true); //bring them back to life
+        foreach (GameObject x in deadEnemies) //For each of the dead enemies
+            if (x.activeSelf == true) //if it isn't actually dead
+                deadEnemies.Remove(x); //remove it from the list of dead enemies
+
         var heading = reticleChild.transform.position - cameraTransform.position; //Calculation of the angle from the Camera to the reticle
         var distance = heading.magnitude; //^
         var direction = heading / distance; //^

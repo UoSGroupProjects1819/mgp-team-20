@@ -33,7 +33,14 @@ public class NPC : MonoBehaviour {
 
     public void Update()
     {
-        aggro = player.GetComponent<Movement>().lastShot;
+        try
+        {
+            aggro = player.GetComponent<movement>().lastShot;
+        }
+        catch
+        {
+            aggro = -1;
+        }
         if (deathActive && deathTimer > 0)
             deathTimer -= Time.deltaTime;
         if (deathActive && deathTimer <= 0)
