@@ -14,7 +14,7 @@ public class movement : MonoBehaviour
     public float lastShot = -1.0f; //The time since the last shot, used for cooldowns. Default at -1.0f so the enemies don't aggro instantly
                                    //In the NPC file I will make it so they check if lastShot is higher than 0, meaning the player has shot, and then they can aggro
 
-    public float health = 2000.0f;
+    public float health = 1000.0f;
     public float speed = 7.5f; //Movement speed of the player
     public float jumpSpeed = 7.5f; //Jump speed of the player
     public float gravity = 20.0f; //Gravity speed
@@ -119,6 +119,7 @@ public class movement : MonoBehaviour
                         {
                             Debug.Log("HIT!"); //Send a message to the console saying "HIT!" - for testing purposes only, will not be seen by the player#
                             h.collider.gameObject.GetComponent<Animator>().SetTrigger("death");
+                            h.collider.gameObject.GetComponent<NPC>().deathTimer = Time.time;
                             h.collider.gameObject.GetComponent<NPC>().deathActive = true;
                             break; //It has killed an enemy, so now stop killing enemies from that single shot - prevents collaterals
                         }
@@ -137,6 +138,7 @@ public class movement : MonoBehaviour
                             {
                                 Debug.Log("HIT!"); //Send a message to the console saying "HIT!" - for testing purposes only, will not be seen by the player#
                                 h.collider.gameObject.GetComponent<Animator>().SetTrigger("death");
+                                h.collider.gameObject.GetComponent<NPC>().deathTimer = Time.time;
                                 h.collider.gameObject.GetComponent<NPC>().deathActive = true;
                             }
                         }
@@ -159,6 +161,7 @@ public class movement : MonoBehaviour
                                 {
                                     Debug.Log("HIT!"); //Send a message to the console saying "HIT!" - for testing purposes only, will not be seen by the player#
                                     h.collider.gameObject.GetComponent<Animator>().SetTrigger("death"); //#PROBABLY WILL NEED TO CHANGE THE WAY HEALTH WORKS SO THAT THE SHOTGUN ISN'T OVERPOWERED
+                                    h.collider.gameObject.GetComponent<NPC>().deathTimer = Time.time;
                                     h.collider.gameObject.GetComponent<NPC>().deathActive = true; //#OR ELSE A SINGLE SHOT COULD KILL 7 ENEMIES WITHOUT ANY HEADSHOTS
                                 }
                             }
@@ -186,6 +189,7 @@ public class movement : MonoBehaviour
                             {
                                 Debug.Log("HIT!"); //Send a message to the console saying "HIT!" - for testing purposes only, will not be seen by the player#
                                 h.collider.gameObject.GetComponent<Animator>().SetTrigger("death");
+                                h.collider.gameObject.GetComponent<NPC>().deathTimer = Time.time;
                                 h.collider.gameObject.GetComponent<NPC>().deathActive = true;
                                 break; //The autorifle should only be able to kill 1 person per bullet, same as the pistol, although it shoots automatically (so the player doesn't have to spam)
                                 //#MAY HAVE TO GIVE THE PISTOL A COOLDOWN IF THE PISTOL IS TOO OVERPOWERED - SOME PEOPLE CAN CLICK FASTER THAN 10 TIMES A SECOND SO THE PISTOL WOULD BE BETTER THAN THE AK

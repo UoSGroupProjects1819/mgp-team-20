@@ -9,6 +9,7 @@ public class NPC : MonoBehaviour {
     public Vector3 cameraPos;
     public int hitChance = 6;
     public int randomiser;
+    public float revivalTimer;
     public float deathTimer;
     public bool deathActive;
     public ParticleSystem onKillEffect;
@@ -26,6 +27,7 @@ public class NPC : MonoBehaviour {
 
     public void KillEnemy()
     {
+        revivalTimer = 10;
         Instantiate(onKillEffect, gameObject.transform.position, Quaternion.identity);
         deathActive = false;
         gameObject.SetActive(false);
@@ -42,7 +44,7 @@ public class NPC : MonoBehaviour {
             aggro = -1;
         }
         if (deathActive && deathTimer > 0)
-            deathTimer -= Time.deltaTime;
+            deathTimer -= Time.time;
         if (deathActive && deathTimer <= 0)
             KillEnemy();
     }
