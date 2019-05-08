@@ -79,7 +79,11 @@ public class movement : MonoBehaviour
         playerPosition = gameObject.transform.position;
         healthDisplay.text = health.ToString();
         if (health <= 0)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             SceneManager.LoadScene("StartMenu");
+        }
         var heading = reticleChild.transform.position - cameraTransform.position; //Calculation of the angle from the Camera to the reticle
         var distance = heading.magnitude; //^
         var direction = heading / distance; //^
