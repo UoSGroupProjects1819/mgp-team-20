@@ -1,9 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class movement : MonoBehaviour
 {
+    [SerializeField]
+    public AudioClip[] soundEffects;
+
+    [SerializeField]
+    public Text healthDisplay;
+
     public GameObject player; //Used for shortening code - I can type "player" instead of GameObject.Find("player") etc
     public GameObject pistol;
     public GameObject flamethrower;
@@ -69,7 +77,9 @@ public class movement : MonoBehaviour
     void Update()
     {
         playerPosition = gameObject.transform.position;
-        Debug.Log(health);
+        healthDisplay.text = health.ToString();
+        if (health <= 0)
+            SceneManager.LoadScene("StartMenu");
         var heading = reticleChild.transform.position - cameraTransform.position; //Calculation of the angle from the Camera to the reticle
         var distance = heading.magnitude; //^
         var direction = heading / distance; //^
@@ -111,6 +121,7 @@ public class movement : MonoBehaviour
                 {
                     if (Time.time - lastShot >= 0.5f)
                     {
+                        AudioSource.PlayClipAtPoint(soundEffects[0], playerPosition);
                         Ray ray = Camera.main.ScreenPointToRay(reticleChild.transform.position); //Check a raycast through the reticle
                         RaycastHit[] hit = Physics.RaycastAll(ray.origin, direction, Mathf.Infinity, layerMask); //and save all the ones with the layer "NPC" to a list called "hit"
                         foreach (RaycastHit h in hit) //For all the things that are hit by the raycast
@@ -132,6 +143,7 @@ public class movement : MonoBehaviour
                 {
                     if (Time.time - lastShot >= 1.5f) //If it has been at least 1.5 seconds since you last shot
                     {
+                        AudioSource.PlayClipAtPoint(soundEffects[1], playerPosition);
                         Ray ray = Camera.main.ScreenPointToRay(reticleChild.transform.position); //Check a raycast through the reticle
                         RaycastHit[] hit = Physics.RaycastAll(ray.origin, direction, Mathf.Infinity, layerMask); //and save all the ones with the layer "NPC" to a list called "hit"
                         foreach (RaycastHit h in hit) //For all the things that are hit by the raycast

@@ -16,6 +16,7 @@ public class NPC : MonoBehaviour {
     public float aggro;
     public Vector3 heldPlayerLocation;
     public float attackCooldown;
+    public AudioClip deathSound;
 
     private float shootTime = -1.0f;
     private float movementSpeed = 1.0f;
@@ -23,6 +24,7 @@ public class NPC : MonoBehaviour {
     public void Start()
     {
         player = GameObject.Find("Player");
+        deathSound = gameObject.GetComponent<AudioSource>().clip;
     }
 
     public void KillEnemy()
@@ -30,6 +32,7 @@ public class NPC : MonoBehaviour {
         revivalTimer = 10;
         Instantiate(onKillEffect, gameObject.transform.position, Quaternion.identity);
         deathActive = false;
+        AudioSource.PlayClipAtPoint(deathSound, gameObject.transform.position);
         gameObject.SetActive(false);
     }
 

@@ -14,25 +14,31 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-        banana = GameObject.Find("banana");
-        umbrella = GameObject.Find("umbrella");
+        banana = player.GetComponent<movement>().pistol;
+        umbrella = player.GetComponent<movement>().sniper;
     }
     
     void Update()
     {
         if ((Vector3.Distance(player.GetComponent<movement>().playerPosition, transform.position)) <= 2)
-            {
-                if (gameObject.name == "bananaSpawner")
+        {
+             if (gameObject.name == "bananaSpawner")
+             {
+                if (banana.activeSelf == false)
                 {
                     banana.SetActive(true);
                     umbrella.SetActive(false);
                 }
-                if (gameObject.name == "umbrellaSpawner")
+             }
+             if (gameObject.name == "umbrellaSpawner")
+             {
+                if (umbrella.activeSelf == false)
                 {
                     banana.SetActive(false);
                     umbrella.SetActive(true);
                 }
             }
+        }
         rotation = gameObject.transform.rotation;
         position = gameObject.transform.position;
         gameObject.transform.Rotate(0, 50 * Time.deltaTime, 0);
